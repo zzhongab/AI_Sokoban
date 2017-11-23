@@ -1,5 +1,6 @@
-# Sokoban AI Solver (HKUST COMP3211 Project)
-## group member
+# Sokoban AI Solver (HKUST COMP3211 Group 6)
+
+## Group members
 | Name         	| Student ID   	| 
 | ------------- 	|:-------------:	|
 | GAO, Huaxuan  	|  20328408     	|
@@ -8,7 +9,7 @@
 | WANG, Guanzhi 	|  20329604		|
 | ZHONG, Zixuan	|  20328800		|
 
-## use
+## Use
 
 ### 1) clone this project
 
@@ -36,7 +37,12 @@ Before the result is computed, you can play the game. (↑ ↓ ← → L)
 
 ![](./resources/screenshot_02.png)
 
+## Java doc
 
-## credit
+[default package](http://hgaoab.student.ust.hk/javadoc3211/docs/package-summary.html)
+
+[reinforcement_learning package](http://hgaoab.student.ust.hk/javadoc3211/reinforcement/reinforcement_learning/package-summary.html)
+
+## Credit
 
 [wfalkwallace/AI/tree/master/hw2](https://github.com/wfalkwallace/AI/tree/master/hw2)
