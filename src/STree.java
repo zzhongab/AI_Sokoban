@@ -8,16 +8,22 @@ import java.util.Queue;
 import java.util.Stack;
 
 /**
- * 
+ * @author COMP3211 Group 6
+ * @since 2017-11-23
  */
 
 /**
- * @author wgf2104
- *
+ * The constructor
  */
 public class STree {
 
+	/**
+ 	 * the initial state
+	 */
 	private State root;
+	/**
+ 	 * used in the while loop to keep the search running
+	 */
 	static boolean JUSTKEEPSWIMMING = true;
 
 	public STree(State r){
@@ -36,11 +42,20 @@ public class STree {
 		}
 	}
 
+	/**
+ 	 * return the root
+ 	 * @return root The initial state 
+	 */
 	public State getRoot() {
 		return root;
 	}
 
 	//for simple checking later
+	/**
+ 	 * for simple checking later
+ 	 * @param solution the final state
+ 	 * @return String The solution 
+	 */
 	private String[] solution(State solution) {
 		JUSTKEEPSWIMMING = false;
 		//LOG
@@ -50,6 +65,16 @@ public class STree {
 		return result;
 	}
 
+	/**
+ 	 * for simple checking later
+ 	 * @param solution final state
+ 	 * @param generated integer indicating number of node generated during the search
+ 	 * @param repeated integer indicating number of state repeated during the search
+ 	 * @param fringe integer indicating number of node inside the fringe after the search
+ 	 * @param seen integer indicating number of node explored during the search
+ 	 * @param start long starting time
+ 	 * @return String The solution 
+	 */
 	private String[] solution(State solution, int generated, int repeated, int fringe, int seen, long start) {
 		JUSTKEEPSWIMMING = false;
 		//LOG
@@ -70,12 +95,20 @@ public class STree {
 		return data;
 	}
 
+	/**
+ 	 * failed to find solution
+ 	 * @return String telling you that it failed to find solution
+	 */
 	private String[] failure() {
 		String[] fail = {"Search Completed and No Solution Found"};
 		return fail;
 	}
 
 	//BFS
+	/**
+	 * This is Breadth first Search
+	 * @return A string containing the solution, u d l r corresponding to up down left right 
+	 */
 	public String[] BFS() {
 		JUSTKEEPSWIMMING = true;
 		//data and results
@@ -91,9 +124,6 @@ public class STree {
 
 		if(node.isGoal())
 			return solution(node, gen, rep, frontier.size(), explored.size(), start);
-
-
-
 
 		while(JUSTKEEPSWIMMING) {
 			if(frontier.peek() == null)
@@ -136,6 +166,10 @@ public class STree {
 	//ENDBFS
 
 	//DFS
+	/**
+	 * This is Depth first Search
+	 * @return A string containing the solution 
+	 */
 	public String[] DFS() {
 		JUSTKEEPSWIMMING = true;
 		//data and results
@@ -174,7 +208,12 @@ public class STree {
 	}
 	//ENDDFS
 	
-	//UCS
+	/**
+	 * Get the cost from priority queue
+	 * @param pq PriorityQueue of state 
+	 * @param comp target State  
+	 * @return A integer indicating the cost
+	 */
 	private int getCostFromPQ(PriorityQueue<State> pq, State comp) {
 		for(Object orig : pq.toArray()) {
 			if( ((State) orig).equals(comp) )
@@ -183,6 +222,10 @@ public class STree {
 		return -1;
 	}
 
+	/**
+	 * This is Uniform Cost Search 
+	 * @return A string containing the solution 
+	 */
 	public String[] UCS() {
 		//data and results
 		long start = System.nanoTime();
@@ -222,6 +265,12 @@ public class STree {
 	//ENDUCS
 
 	//GREEDYOG
+	/**
+	 * Get the number of open goal from priority queue
+	 * @param pq PriorityQueue of state 
+	 * @param comp target State  
+	 * @return A integer indicating the open goal
+	 */
 	private int getOGFromPQ(PriorityQueue<State> pq, State comp) {
 		for(Object orig : pq.toArray()) {
 			if( ((State) orig).equals(comp) )
@@ -230,6 +279,10 @@ public class STree {
 		return -1;
 	}
 
+	/**
+	 * This is greedy search using open goal as heuristic
+	 * @return A string containing the solution 
+	 */
 	public String[] GreedyOG() {
 		//data and results
 		long start = System.nanoTime();
@@ -269,6 +322,14 @@ public class STree {
 	//ENDGREEDYOG
 	
 	//GREEDYMD
+
+
+	/**
+	 * Get the Manhattan distance from priority queue
+	 * @param pq PriorityQueue of state 
+	 * @param comp target State  
+	 * @return A integer indicating the Manhattan distance
+	 */
 	private int getMDFromPQ(PriorityQueue<State> pq, State comp) {
 		for(Object orig : pq.toArray()) {
 			if( ((State) orig).equals(comp) )
@@ -277,6 +338,10 @@ public class STree {
 		return -1;
 	}
 
+	/**
+	 * This is greedy search using Manhattan Distance as heuristic
+	 * @return A string containing the solution 
+	 */
 	public String[] GreedyMD() {
 		//data and results
 		long start = System.nanoTime();
@@ -316,6 +381,12 @@ public class STree {
 	//ENDGREEDYMD
 	
 	//ASTARMD
+	/**
+	 * Get the A* Manhattan distance (cost + MD) from priority queue
+	 * @param pq PriorityQueue of state
+	 * @param comp target State  
+	 * @return int A integer indicating the Manhattan distance
+	 */
 	private int getStarMDFromPQ(PriorityQueue<State> pq, State comp) {
 		for(Object orig : pq.toArray()) {
 			if( ((State) orig).equals(comp) )
@@ -324,6 +395,10 @@ public class STree {
 		return -1;
 	}
 
+	/**
+	 * This is A* search using Manhattan Distance as heuristic
+	 * @return A string containing the solution 
+	 */
 	public String[] AStarMD() {
 		//data and results
 		long start = System.nanoTime();
@@ -363,6 +438,12 @@ public class STree {
 	//ENDASTARMD
 	
 	//ASTAROG
+	/**
+	 * Get the A* open goal (cost + OG) from priority queue
+	 * @param pq PriorityQueue of state
+	 * @param comp target State 
+	 * @return int A integer indicating the Manhattan distance
+	 */
 		private int getStarOGFromPQ(PriorityQueue<State> pq, State comp) {
 			for(Object orig : pq.toArray()) {
 				if( ((State) orig).equals(comp) )
@@ -370,7 +451,10 @@ public class STree {
 			}
 			return -1;
 		}
-
+	/**
+	 * This is A* search using open goal as heuristic
+	 * @return A string containing the solution 
+	 */
 		public String[] AStarOG() {
 			//data and results
 			long start = System.nanoTime();
@@ -408,18 +492,6 @@ public class STree {
 			return new String[0];
 		}
 		//ENDASTAROG
-
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-
 
 
 
