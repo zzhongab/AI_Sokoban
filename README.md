@@ -10,9 +10,16 @@
 
 ## use
 
+clone the file and enter it
+enter the src/
+
+```bash
+$ javac *.java 
+```
 ```bash
 $ java GUI 
 ```
+and now you can input different layouts and different algorithms to run
 ## credit
 
 [wfalkwallace/AI/tree/master/hw2](https://github.com/wfalkwallace/AI/tree/master/hw2)
