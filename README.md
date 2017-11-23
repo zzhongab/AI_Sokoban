@@ -10,16 +10,33 @@
 
 ## use
 
-clone the file and enter it
-enter the src/
+### 1) clone this project
 
 ```bash
-$ javac *.java 
+$ git clone https://github.com/zzhongab/AI_Sokoban.git
 ```
+### 2) launch the GUI
+
 ```bash
+$ cd AI_Sokoban/bin
 $ java GUI 
 ```
-and now you can input different layouts and different algorithms to run
+
+### 3) load a game map
+
+![](./resources/screenshot_00.png)
+
+Before the result is computed, you can play the game. (↑ ↓ ← → L)
+
+### 4) compute the result
+
+![](./resources/screenshot_01.png)
+
+### 5) make the agent move according to the result
+
+![](./resources/screenshot_02.png)
+
+
 ## credit
 
 [wfalkwallace/AI/tree/master/hw2](https://github.com/wfalkwallace/AI/tree/master/hw2)

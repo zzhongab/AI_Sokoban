@@ -2,13 +2,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * 
- */
 
 /**
- * @author wgf2104
- *
+ * A State to store the current state of the game
+ * @author COMP 3211 Group6
+ * @since 2017-11-23
  */
 public class State implements Comparable<State> {
 
@@ -22,15 +20,48 @@ public class State implements Comparable<State> {
 	//	$ (dollar) Box on floor
 	//	* (asterisk) Box on goal
 
+	/**
+	 * A String to store the whole layout
+	 */
 	private String statestring;
+
+	/**
+	 * A 2D array to store the layout
+	 */
 	public char[][] level;
+
+	/**
+	 * the initial x-coordinate of player
+	 */
 	private int x;
+
+	/**
+	 * the inital y-coordinate of player
+	 */
 	private int y;
+
+	/**
+	 * the cost of the player from begining
+	 */
 	private int cost;
+
+	/**
+	 * The String to store the path up to now
+	 */
 	private String path;
 
+	/**
+	 * the previous State of this State
+	 */
 	private State parent;
 
+	/**
+	 * Constructor of State
+	 * @param level the layout
+	 * @param x the x-coordinate of player
+	 * @param y the y-coordinate of player
+	 * @return State return the State
+	 */
 	public State (char[][] level, int x, int y) {
 		parent = null;
 
@@ -54,6 +85,12 @@ public class State implements Comparable<State> {
 				statestring += c;
 	}
 
+	/**
+	 * The constructor of State
+	 * @param par The parent state
+	 * @param dir The direction of what the parent will go
+	 * @return State return the State
+	 */
 	public State (State par, char dir) {
 
 		parent = par;
@@ -98,11 +135,20 @@ public class State implements Comparable<State> {
 				statestring += c;
 	}
 
+	/**
+	 * get the cost
+	 * @return cost Return the cost
+	 */
 	public int getCost() {
 		return cost;
 	}
 
 	//sum of shortest paths from boxes to goals
+
+	/**
+	 * calculate the manhattan distance between boxes and goals
+	 * @return sum The sum of distance between boxes and goals
+	 */
 	public int manhDist() {
 		ArrayList<int[]> goals = new ArrayList<int[]>();
 		ArrayList<int[]> boxes = new ArrayList<int[]>();
@@ -130,6 +176,10 @@ public class State implements Comparable<State> {
 	}
 
 	//number of empty goals
+	/**
+	 * calculate the number of open goals
+	 * @return opengoals Return the sum of open goals
+	 */
 	public int openGoals() {
 		int opengoals = 0;
 		for(char[] row : level)
@@ -139,18 +189,33 @@ public class State implements Comparable<State> {
 		return opengoals;
 	}
 
+	/**
+	 * get the map of the state
+	 * @return level return the state map
+	 */
 	public char[][] getState() {
 		return level;
 	}
 
+	/**
+	 * return the x-coordinate of player
+	 * @return x the x-coordinate of player
+	 */
 	public int getX() {
 		return x;
 	}
 
+	/**
+	 * return the y-coordinate of player
+	 * @return y the y-coordinate of player
+	 */
 	public int getY() {
 		return y;
 	}
 
+	/**
+	 * check the current state
+	 */
 	public void logState() {
 		try {
 			FileWriter fw = new FileWriter("log.txt", true);
@@ -169,6 +234,9 @@ public class State implements Comparable<State> {
 		}
 	}
 
+	/**
+	 * print the current state
+	 */
 	public void printState() {
 		for(char[] row : level){
 			for(char c : row){
@@ -180,6 +248,9 @@ public class State implements Comparable<State> {
 
 	}
 
+	/**
+	 * write result in txt file
+	 */
 	public void log(String line) {
 		try {
 			FileWriter fw = new FileWriter("log.txt", true);
@@ -191,22 +262,43 @@ public class State implements Comparable<State> {
 		}
 	}
 
+	/**
+	 * get the stateString
+	 * @return stateString return the StateString
+	 */
 	public String getStateString() {
 		return statestring;
 	}
 
+	/**
+	 * get the parent state of the current state
+	 * @return parent the parent of the current state
+	 */
 	public State getParent() {
 		return parent;
 	}
 
+	/**
+	 * get the path of current
+	 * @return path the path from start to current
+	 */
 	public String getPath() {
 		return path;
 	}
 
+	/**
+	 * return the hashcode of the statestring
+	 * @return statestring.hashCode() the hash code of the statestring
+	 */
 	public int hashCode() {
 		return statestring.hashCode();
 	}
 
+	/**
+	 * check whether the two states is equal
+	 * @param obj The input object to compared with the current state
+	 * @return boolean if equal return true, else return false
+	 */
 	public boolean equals(Object obj) {
 		if (obj == null)
 			return false;
@@ -215,6 +307,10 @@ public class State implements Comparable<State> {
 		return ( ((State) obj).getStateString().equals(this.getStateString()) ) ? true : false;
 	}
 
+	/**
+	 * check whether the state is the goal
+	 * @return if is goal, return true, else return false
+	 */
 	public boolean isGoal() {
 		for(int i = 0; i < statestring.length(); i++) { 
 			char c = statestring.charAt(i); 
@@ -224,6 +320,10 @@ public class State implements Comparable<State> {
 		return true;
 	}
 
+	/**
+	 * check whether the up action is available
+	 * @return boolean if available return true, else return false
+	 */
 	public boolean isUpValid() {
 		//there's always an up, because I'll check later 
 		//to make sure you dont move into a wall
@@ -251,6 +351,10 @@ public class State implements Comparable<State> {
 		return false;
 	}
 
+	/**
+	 * check whether the down action is available
+	 * @return boolean if available return true, else return false
+	 */
 	public boolean isDownValid() {
 		//there's always a down, because I'll check later 
 		//to make sure you dont move into a wall					
@@ -278,6 +382,10 @@ public class State implements Comparable<State> {
 		return false;
 	}
 
+	/**
+	 * check whether the left action is available
+	 * @return boolean if available return true, else return false
+	 */
 	public boolean isLeftValid() {
 		//there's always a left, because I'll check later 
 		//to make sure you dont move into a wall					
@@ -304,6 +412,10 @@ public class State implements Comparable<State> {
 		return false;
 	}
 
+	/**
+	 * check whether the right action is available
+	 * @return boolean if available return true, else return false
+	 */
 	public boolean isRightValid() {
 		//there's always a right, because I'll check later 
 		//to make sure you dont move into a wall					
@@ -330,6 +442,10 @@ public class State implements Comparable<State> {
 		return false;
 	}
 
+	/**
+	 * get the available moves at current state
+	 * @return moves a arraylist to store all the available moves
+	 */
 	public ArrayList<Character> getValidMoves() {
 
 		ArrayList<Character> moves = new ArrayList<Character>();
@@ -349,6 +465,12 @@ public class State implements Comparable<State> {
 		return moves;
 	}
 
+	/**
+	 * compute the next state depend on the input state and the action
+	 * @param par The State now
+	 * @param dir The action will take
+	 * @return newlevel A 2D array to store the next level map
+	 */
 	private char[][] computeState(State par, char dir) {
 		char[][] oldlevel = par.getState();
 		int x = par.getX();
@@ -593,12 +715,22 @@ public class State implements Comparable<State> {
 		return newlevel;
 	}
 
+	/**
+	 * compare two states' cost
+	 * @param o The input State
+	 * @return result if equal, return 0, if current state's cost less than the input state, return -1, else return 1
+	 */
 	@Override
 	public int compareTo(State o) {
 		if(this.getCost() == o.getCost())
 			return 0;
 		return (getCost() < o.getCost() ? -1 : 1);
 	}
+
+	/**
+	 * convert the input String with x and y coordinate
+	 * @return result A String with x y coordinate
+	 */
 	public String toString() {	
 		return this.statestring+" [x]: "+x+" [y]:"+y;
 	}

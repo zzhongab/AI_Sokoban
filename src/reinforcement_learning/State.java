@@ -18,13 +18,28 @@ public class State {
 	// 4 right
 
 	private char[][] level;
-	private int x; // x coordinate of the player
-	private int y; // y coordinate of the player
+	/**
+	 * x coordinate of the player
+	 */
+	private int x; 
+	/**
+	 * y coordinate of the player
+	 */
+	private int y; 
+	/**
+	 * number of exploration
+	 */
 	private int num_exploration;
 
 	// private int[] x_boxs;//x coordinate of the boxes
 	// private int[] y_boxs;// y coordinate of the boxes
 
+	/**
+	 * constructor of state
+	 * @param level a 2D char array storing the level
+	 * @param x int x coordinate of player
+	 * @param y int y coordinate of player
+	 */
 	public State(char[][] level, int x, int y/*, int[] x_boxs, int[] y_boxs*/) {
 
 		// 2D deep copy
@@ -54,7 +69,10 @@ public class State {
 		// }
 		// }
 	}
-
+	/**
+	* copy constructor
+	* @param state state to copy
+	*/
 	public State(State state) {
 
 		// 2D deep copy
@@ -77,6 +95,10 @@ public class State {
 		// }
 	}
 
+	/**
+	 * see whether going up is a valid move
+	 * @return boolean whether going up is valid
+	 */
 	private boolean isUpValid() {
 		// there's always an up, because I'll check later
 		// to make sure you dont move into a wall
@@ -106,6 +128,10 @@ public class State {
 		return false;
 	}
 
+	/**
+	 * see whether going down is a valid move
+	 * @return boolean whether going down is valid
+	 */
 	private boolean isDownValid() {
 		// there's always a down, because I'll check later
 		// to make sure you dont move into a wall
@@ -135,6 +161,10 @@ public class State {
 		return false;
 	}
 
+	/**
+	 * see whether going left is a valid move
+	 * @return boolean whether going left is valid
+	 */
 	private boolean isLeftValid() {
 		// there's always a left, because I'll check later
 		// to make sure you dont move into a wall
@@ -163,6 +193,10 @@ public class State {
 		return false;
 	}
 
+	/**
+	 * see whether going right is a valid move
+	 * @return boolean whether going right is valid
+	 */
 	private boolean isRightValid() {
 		// there's always a right, because I'll check later
 		// to make sure you dont move into a wall
@@ -191,6 +225,12 @@ public class State {
 		return false;
 	}
 
+	/**
+	 * compute the state from previous state and a direction
+	 * @param par previous state
+	 * @param dir direction to move
+	 * @return boolean whether going up is valid
+	 */
 	public State computeState(State par, int dir) {
 		char[][] oldlevel = par.getState();
 		int x = par.getX();
@@ -445,7 +485,10 @@ public class State {
 		return new State(newlevel, x_new, y_new);
 
 	}
-
+	/**
+	 * get possible action from current state
+	 * @return int array storing the actions
+	 */
 	public int[] possibleActionsFromState() {
 		ArrayList<Integer> result = new ArrayList<>();
 		if (isUpValid()) {
@@ -466,6 +509,11 @@ public class State {
 
 	// check whether the player is stick to a box
 	// if this state and next_state are both stick to the box, it means it push the box
+	
+	/**
+	 * see whether the player is sticking to a box
+	 * @return boolean whether the player is sticking to a box
+	 */
 	public boolean stickToBox() {
 		if(level[x-1][y] == '$' || level[x+1][y] == '$' || level[x][y+1] == '$' || level[x][y-1] == '$') {
 			return true;
@@ -474,14 +522,25 @@ public class State {
 	}
 	
 	// update the num_exploration
+	/**
+	 * update number of exploration
+	 */
 	public void update_explore() {
 		this.num_exploration++;
 	}
 	// return the num_exploration
+	/**
+	 * return number of exploration
+	 * @return number of exploration
+	 */
 	public int num_explore() {
 		return this.num_exploration;
 	}
-	
+
+	/**
+	 * check whether any box is in deadlock
+	 * @return boolean indicating deadlock or not
+	 */
 	public boolean checkDeadlock() {
 		boolean deadlock = false;
 		// checking the position of all box could be consuming
@@ -640,6 +699,10 @@ public class State {
 		return deadlock;
 	}
 	
+	/**
+	 * check whether goal state is reached
+	 * @return boolean indicating whether goal state is reached
+	 */
 	public boolean isGoal() {
 		for (int i = 0; i < level.length; i++) {
 			for (int j = 0; j < level[i].length; j++) {
@@ -651,6 +714,10 @@ public class State {
 		return true;
 	}
 
+	/**
+	 * check number of goals that has been reached
+	 * @return int number of goals that has been reached
+	 */
 	public int numOfGoals() {
 		int num = 0;
 		for (int i = 0; i < level.length; i++) {
@@ -663,17 +730,35 @@ public class State {
 		return num;
 	}
 
+	/**
+	 * get the current state
+	 * @return char[][] staring the map
+	 */
 	public char[][] getState() {
 		return level;
 	}
 
+	/**
+	 * get the x coordinate of player
+	 * @return int the x coordinate
+	 */
 	public int getX() {
 		return x;
 	}
 
+	/**
+	 * get the y coordinate of player
+	 * @return int the y coordinate
+	 */
 	public int getY() {
 		return y;
 	}
+
+	/**
+	 * compare the current state to target state
+	 * 
+	 * @return boolean indicating whether the current state s the same as target state
+	 */
 
 	@Override
 	public boolean equals(Object o) {

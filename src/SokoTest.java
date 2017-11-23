@@ -1,17 +1,17 @@
 import java.io.File;
 import java.util.Scanner;
 
-/**
- * 
- */
+
 
 /**
- * @author wgf2104
- *
+ * The main class to run the sokoban AI
+ * @author COMP 3211 Group6
+ * @since 2017-11-23
  */
 public class SokoTest {
 
 	/**
+	 * The main method to run the project
 	 * @param args
 	 */
 	public static void main(String[] args) {
