@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  * A State to store the current state of the game
- * @author comp3211 group6
+ * @author COMP 3211 Group6
  * @since 2017-11-23
  */
 public class State implements Comparable<State> {
