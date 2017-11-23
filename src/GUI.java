@@ -24,11 +24,10 @@ import javafx.stage.Stage;
 import reinforcement_learning.QLearning;
 
 /**
-* <h1>This is the GUI for the whole project</h1>
-* <p>
-* This Class, GUI, is the entry point of this program, it invokes other classes to compute game results.
+* <h1>This project is a GUI Sokoban AI Solver./h1>
+* 
 *
-* @author  COMP3211 Group Six
+* @author  COMP 3211 Group6
 * @version 1.0
 * @since   2017-11-23
 */
