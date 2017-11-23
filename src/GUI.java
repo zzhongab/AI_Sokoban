@@ -23,7 +23,15 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import reinforcement_learning.QLearning;
 
-
+/**
+* <h1>This is the GUI for the whole project</h1>
+* <p>
+* This Class, GUI, is the entry point of this program, it invokes other classes to compute game results.
+*
+* @author  COMP3211 Group Six
+* @version 1.0
+* @since   2017-11-23
+*/
 public class GUI extends Application {
 //	UI
 	private Canvas canvas = new Canvas();
@@ -42,12 +50,22 @@ public class GUI extends Application {
 	private boolean loadMap = false;
 	private boolean computeSolution = false;
 	private Text filePath = new Text(" ");
-
+	
+	/**
+	 * The main method, the entry point of the program.
+	 * @param args Unused.
+	 * @return Nothing.
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		launch(args);
 	}
-
+	
+	/**
+	 * The GUI method is inherited from super class Application.
+	 * @param primaryStage Stage variable for GUI
+	 * @return Nothing 
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
@@ -122,6 +140,12 @@ public class GUI extends Application {
 	     stage.show();
 	}
 	
+	
+	/**
+	 * This method handles KeyEvent.
+	 * @param keyEvent keyEvent generated when some key is pressed
+	 * @return Nothing 
+	 */
 	private void handleKeyPressed(KeyEvent keyEvent) {
 		if(keyEvent.getCode()== KeyCode.ENTER) {
 			this.handleNextStep();
@@ -148,6 +172,12 @@ public class GUI extends Application {
 			}
 		}
 	}
+	
+	/**
+	 * This method makes the agent move when a arrow key is pressed (↑ ↓ ← → L).
+	 * @param dir The direction parameter indicates which direction the agent should move to.
+	 * @return Nothing 
+	 */
 	private void handleMove(char dir) {
 		State child = null;
 		switch (dir) {
@@ -189,6 +219,11 @@ public class GUI extends Application {
 		}
 	}
 
+	/**
+	 * This method makes the agent move according the result computed by the program.
+	 * @param Nothing
+	 * @return Nothing 
+	 */
 	private void handleNextStep() {
 		char[] solutionArray = solution.toCharArray();
 //		System.out.println(solutionArray[step]);
@@ -200,7 +235,12 @@ public class GUI extends Application {
 			this.step++;
 		}			
 	}
-
+	
+	/**
+	 * This method invokes other classes to compute the result.
+	 * @param Nothing
+	 * @return Nothing 
+	 */
 	private void handleComputeResult() {
 		this.mapFile = null;
 		this.stat.clear();
@@ -273,7 +313,11 @@ public class GUI extends Application {
 		}
 	}
 
-
+	/**
+	 * This method loads a game map.
+	 * @param Nothing
+	 * @return Nothing 
+	 */
 	private void handleLoadMap() {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
@@ -291,6 +335,11 @@ public class GUI extends Application {
 //		this.canvas.requestFocus();
 	}
 	
+	/**
+	 * This method updates the canvas
+	 * @param state The game current state. 
+	 * @return Nothing 
+	 */
 	private void printState(State state) {
 		GraphicsContext gc= canvas.getGraphicsContext2D();
 		char[][] map = state.getState();
