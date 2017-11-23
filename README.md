@@ -10,22 +10,23 @@
 
 ## use
 
-### 1) compile
-
+### 1) clone this project
 
 ```bash
 $ git clone https://github.com/zzhongab/AI_Sokoban.git
-$ cd AI_Sokoban/bin
 ```
 ### 2) launch the GUI
 
 ```bash
+$ cd AI_Sokoban/bin
 $ java GUI 
 ```
 
 ### 3) load a game map
 
 ![](./resources/screenshot_00.png)
+
+Before the result is computed, you can play the game. (↑ ↓ ← → L)
 
 ### 4) compute the result
 
@@ -35,7 +36,6 @@ $ java GUI
 
 ![](./resources/screenshot_02.png)
 
-and now you can input different layouts and different algorithms to run
 
 ## credit
 
