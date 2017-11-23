@@ -54,7 +54,6 @@ public class GUI extends Application {
 	/**
 	 * The main method, the entry point of the program.
 	 * @param args Unused.
-	 * @return Nothing.
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -64,7 +63,6 @@ public class GUI extends Application {
 	/**
 	 * The GUI method is inherited from super class Application.
 	 * @param primaryStage Stage variable for GUI
-	 * @return Nothing 
 	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -144,7 +142,6 @@ public class GUI extends Application {
 	/**
 	 * This method handles KeyEvent.
 	 * @param keyEvent keyEvent generated when some key is pressed
-	 * @return Nothing 
 	 */
 	private void handleKeyPressed(KeyEvent keyEvent) {
 		if(keyEvent.getCode()== KeyCode.ENTER) {
@@ -176,7 +173,6 @@ public class GUI extends Application {
 	/**
 	 * This method makes the agent move when a arrow key is pressed (↑ ↓ ← → L).
 	 * @param dir The direction parameter indicates which direction the agent should move to.
-	 * @return Nothing 
 	 */
 	private void handleMove(char dir) {
 		State child = null;
@@ -220,9 +216,7 @@ public class GUI extends Application {
 	}
 
 	/**
-	 * This method makes the agent move according the result computed by the program.
-	 * @param Nothing
-	 * @return Nothing 
+	 * This method makes the agent move according the result computed by the program. 
 	 */
 	private void handleNextStep() {
 		char[] solutionArray = solution.toCharArray();
@@ -238,8 +232,6 @@ public class GUI extends Application {
 	
 	/**
 	 * This method invokes other classes to compute the result.
-	 * @param Nothing
-	 * @return Nothing 
 	 */
 	private void handleComputeResult() {
 		this.mapFile = null;
@@ -314,9 +306,7 @@ public class GUI extends Application {
 	}
 
 	/**
-	 * This method loads a game map.
-	 * @param Nothing
-	 * @return Nothing 
+	 * This method loads a game map. 
 	 */
 	private void handleLoadMap() {
 		FileChooser fileChooser = new FileChooser();
@@ -338,7 +328,6 @@ public class GUI extends Application {
 	/**
 	 * This method updates the canvas
 	 * @param state The game current state. 
-	 * @return Nothing 
 	 */
 	private void printState(State state) {
 		GraphicsContext gc= canvas.getGraphicsContext2D();
