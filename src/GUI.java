@@ -72,7 +72,7 @@ public class GUI extends Application {
 		Button btLoadMap = new Button("Load Map");
 		btLoadMap.setOnAction( e -> handleLoadMap());
 //		text label
-		Text searchTypes = new Text("Specify which search to use [1-7]:");
+		Text searchTypes = new Text("Specify which search to use:");
 //		drop down
 		
 		comboBox.setMaxWidth(100);

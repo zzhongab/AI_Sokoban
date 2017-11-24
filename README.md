@@ -9,7 +9,7 @@
 | WANG, Guanzhi 	|  20329604		|
 | ZHONG, Zixuan	|  20328800		|
 
-## Use
+## Set up
 
 ### 1) clone this project
 
@@ -23,19 +23,50 @@ $ cd AI_Sokoban/bin
 $ java GUI 
 ```
 
-### 3) load a game map
+## Search Algorithms
+
+
+### 1) Load the map
+
+click on the `Load Map` button and choose `/levels/5.txt`.
 
 ![](./resources/screenshot_00.png)
 
 Before the result is computed, you can play the game. (↑ ↓ ← → L)
 
-### 4) compute the result
+### 2) Compute the result
+
+Choose a search algorithm and click on the button `Compute Result`
 
 ![](./resources/screenshot_01.png)
 
-### 5) make the agent move according to the result
+### 3) Move the agent
+
+Keep pressing on the `enter(return)` button to make the agent move according to the result.
 
 ![](./resources/screenshot_02.png)
+
+## Q-Learning
+
+### 1) Load the map
+
+click on the `Load Map` button and choose `/levels/QLearning/1.txt`.
+
+![](./resources/screenshot_03.png)
+
+Before the result is computed, you can play the game. (↑ ↓ ← → L)
+
+### 2) Compute the result
+
+Choose `8) Q-Learning` and click on the button `Compute Result`
+
+![](./resources/screenshot_04.png)
+
+### 3) Move the agent
+
+Keep pressing on the `enter(return)` button to make the agent move according to the result.
+
+![](./resources/screenshot_05.png)
 
 ## Java doc
 
