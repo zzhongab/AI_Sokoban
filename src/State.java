@@ -60,7 +60,6 @@ public class State implements Comparable<State> {
 	 * @param level the layout
 	 * @param x the x-coordinate of player
 	 * @param y the y-coordinate of player
-	 * @return State return the State
 	 */
 	public State (char[][] level, int x, int y) {
 		parent = null;
@@ -89,7 +88,6 @@ public class State implements Comparable<State> {
 	 * The constructor of State
 	 * @param par The parent state
 	 * @param dir The direction of what the parent will go
-	 * @return State return the State
 	 */
 	public State (State par, char dir) {
 
@@ -250,6 +248,7 @@ public class State implements Comparable<State> {
 
 	/**
 	 * write result in txt file
+	 * @param line a String
 	 */
 	public void log(String line) {
 		try {

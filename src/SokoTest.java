@@ -12,7 +12,7 @@ public class SokoTest {
 
 	/**
 	 * The main method to run the project
-	 * @param args
+	 * @param args main
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

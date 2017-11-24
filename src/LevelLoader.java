@@ -46,7 +46,7 @@ public class LevelLoader {
 
 	/**
 	 * load the txt file by row
-	 * @param levelsoure the source .txt file
+	 * @param levelsource the source .txt file
 	 * @return rowlist an arraylist of input levelmap
 	 */
 	private ArrayList<String> loadRowList(File levelsource) {

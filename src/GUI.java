@@ -24,10 +24,11 @@ import javafx.stage.Stage;
 import reinforcement_learning.QLearning;
 
 /**
-* <h1>This project is a GUI Sokoban AI Solver./h1>
-* 
+* <h1>This is the GUI for the whole project</h1>
+* <p>
+* This Class, GUI, is the entry point of this program, it invokes other classes to compute game results.
 *
-* @author  COMP 3211 Group6
+* @author  COMP3211 Group Six
 * @version 1.0
 * @since   2017-11-23
 */
@@ -72,7 +73,7 @@ public class GUI extends Application {
 		Button btLoadMap = new Button("Load Map");
 		btLoadMap.setOnAction( e -> handleLoadMap());
 //		text label
-		Text searchTypes = new Text("Specify which search to use:");
+		Text searchTypes = new Text("Specify which search to use [1-7]:");
 //		drop down
 		
 		comboBox.setMaxWidth(100);

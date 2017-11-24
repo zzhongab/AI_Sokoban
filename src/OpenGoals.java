@@ -11,7 +11,7 @@ public class OpenGoals implements Comparator<State> {
  	/**
  	 * compare the open goals of two input state
  	 * @param o1 input State1
- 	 * @param o1 input State2
+ 	 * @param o2 input State2
  	 * @return result return an integer of the comparision
  	 */
 	@Override
